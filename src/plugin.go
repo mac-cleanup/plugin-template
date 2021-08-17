@@ -4,8 +4,8 @@ import "fmt"
 
 type plugin string
 
-func (g plugin) Clean() {
+func (g plugin) Cleanup() {
 	fmt.Println("Hello Universe")
 }
 
-var Clean plugin
+var Cleanup plugin
