@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+
+	color "github.com/fatih/color"
 )
 
 type plugin string
@@ -16,7 +18,7 @@ func (g plugin) Cleanup() {
 	DeleteFiles("~/DIR_YOU_WANT_TO_BE_CLEANED") // DIR_YOU_WANT_TO_BE_CLEANED is the path to the directory you want to be cleaned
 }
 
-func DeleteFiles(dir string) error {
+func DeleteFiles(dir string, message string) error {
 	d, err := os.Open(dir)
 	if err != nil {
 		return err
@@ -32,15 +34,16 @@ func DeleteFiles(dir string) error {
 			return err
 		}
 	}
+
+	color.Cyan(message + "...")
 	return nil
 }
 
-func ShellCommand(command string) {
-	out, err := exec.Command("/bin/sh", "-c", command).Output()
-	if err != nil {
-		fmt.Printf("error %s", err)
-	}
-	fmt.Printf("%s", out)
+func main() {
+	plugin := plugin("")
+	plugin.Cleanup()
 }
+
+
 
 var Cleanup plugin
