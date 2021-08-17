@@ -22,7 +22,7 @@ jobs:
       run: go build -buildmode=plugin -o dist/plugin.so src/plugin.go
 
   release:
-    runs-on: mac-os
+    runs-on: ubuntu-latest
     steps:
     - name: Commit
       uses: stefanzweifel/git-auto-commit-action@v4
