@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
 
@@ -32,6 +33,14 @@ func DeleteFiles(dir string) error {
 		}
 	}
 	return nil
+}
+
+func ShellCommand(command string) {
+	out, err := exec.Command("/bin/sh", "-c", command).Output()
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
+	fmt.Printf("%s", out)
 }
 
 var Cleanup plugin
