@@ -1,4 +1,4 @@
-name: Go
+name: Build Plugin
 
 on:
   push:
@@ -20,3 +20,11 @@ jobs:
 
     - name: Build
       run: go build -buildmode=plugin -o dist/plugin.so src/plugin.go
+
+  release:
+    runs-on: mac-os
+    steps:
+    - name: Commit
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: New Binary
