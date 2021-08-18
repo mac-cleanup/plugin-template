@@ -5,8 +5,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-
-	color "github.com/fatih/color"
 )
 
 type plugin string
@@ -35,7 +33,7 @@ func DeleteFiles(dir string, message string) error {
 		}
 	}
 
-	color.Cyan(message + "...")
+	fmt.Println(message)
 	return nil
 }
 
